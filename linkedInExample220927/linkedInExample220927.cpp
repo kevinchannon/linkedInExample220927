@@ -31,12 +31,10 @@ int main() {
   auto strMots7 = std::vector<std::string>(calculateItemCount(myReadFile));
 
   std::string myText;
-  const auto getLineFromFile = [&myReadFile, &myText]() {
+  std::ranges::generate(strMots7, [&myReadFile, &myText]() {
     std::getline(myReadFile, myText);
     return myText;
-  };
-
-  std::generate(strMots7.begin(), strMots7.end(), getLineFromFile);
+  });
 
   std::cout << strMots7.back() << std::endl;
 
