@@ -5,12 +5,16 @@
 #include <string>
 #include <vector>
 
+constexpr auto fileWordLength = 7u;
+constexpr auto lineEndingLength = 2u;
+constexpr auto lineLength = fileWordLength + lineEndingLength;
+
 size_t calculateItemCount(std::ifstream& file) {
   file.seekg(0, std::ifstream::end);
   auto byteCount = file.tellg();
   file.seekg(0);
 
-  return (byteCount / 9) + (byteCount % 9 != 0 ? 1 : 0);
+  return (byteCount / lineLength) + (byteCount % lineLength != 0 ? 1 : 0);
 }
 
 int main() {
