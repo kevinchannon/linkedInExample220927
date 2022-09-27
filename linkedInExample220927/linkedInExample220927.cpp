@@ -4,6 +4,14 @@
 #include <string>
 #include <vector>
 
+size_t calculateItemCount(std::ifstream& file) {
+  file.seekg(0, std::ifstream::end);
+  auto byteCount = file.tellg();
+  file.seekg(0);
+
+  return (byteCount / 9) + (byteCount % 9 != 0 ? 1 : 0);
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
@@ -17,8 +25,8 @@ int main()
       return 1;
     }
 
-    myReadFile.seekg(0, myReadFile.end);
-    int nombre = (int)(ceil)((double)(unsigned long int)myReadFile.tellg() / 9.);
+    auto nombre = calculateItemCount(myReadFile);
+
     auto strMots7 = std::vector<std::string>(nombre, std::string{});
     myReadFile.seekg(0);
 
