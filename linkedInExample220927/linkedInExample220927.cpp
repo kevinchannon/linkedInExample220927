@@ -11,7 +11,7 @@ int main()
 
     std::string myText;
     std::ifstream MyReadFile(fileName);
-    if ((MyReadFile.rdstate() & std::ifstream::failbit)) {
+    if (MyReadFile.is_open()) {
       std::cout << "Error opening '" << fileName << "'\n";
       return 1;
     }
