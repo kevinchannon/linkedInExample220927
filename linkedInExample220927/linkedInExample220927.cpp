@@ -13,8 +13,9 @@ constexpr auto lineLength = fileWordLength + lineEndingLength;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-inline size_t calculateItemCount(std::ifstream& file);
+inline void readFileAndPrintFinalLine(std::ifstream& file);
 inline std::vector<std::string> readItemsFromFile(std::ifstream& file);
+inline size_t calculateItemCount(std::ifstream& file);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -29,14 +30,22 @@ int main() {
     return 1;
   }
 
-  if (const auto strMots7 = readItemsFromFile(myReadFile);
-      not strMots7.empty()) {
-    std::cout << strMots7.back() << std::endl;
-  }
+  readFileAndPrintFinalLine(myReadFile);
 
   std::cout << "Fin";
 
   return 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+void readFileAndPrintFinalLine(std::ifstream& file) {
+  const auto strMots7 = readItemsFromFile(file);
+  if (strMots7.empty()) {
+    return;
+  }
+
+  std::cout << strMots7.back() << std::endl;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
