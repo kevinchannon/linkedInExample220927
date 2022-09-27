@@ -17,6 +17,18 @@ size_t calculateItemCount(std::ifstream& file) {
   return (byteCount / lineLength) + (byteCount % lineLength != 0 ? 1 : 0);
 }
 
+std::vector<std::string> readItemsFromFile(std::ifstream& file) {
+  auto out =
+      std::vector<std::string>(calculateItemCount(file), std::string(7, '\0'));
+
+  std::ranges::for_each(out, [&file](auto&& word) {
+    file.read(word.data(), fileWordLength)
+        .seekg(lineEndingLength, std::ifstream::cur);
+  });
+
+  return out;
+}
+
 int main() {
   std::cout << "Hello World!\n";
 
@@ -28,14 +40,7 @@ int main() {
     return 1;
   }
 
-  auto strMots7 = std::vector<std::string>(calculateItemCount(myReadFile), std::string(7, '\0'));
-
-  std::ranges::for_each(strMots7, [&myReadFile](auto&& word) {
-    myReadFile
-      .read(word.data(), fileWordLength)
-      .seekg(lineEndingLength, std::ifstream::cur);
-  });
-
+  const auto strMots7 = readItemsFromFile(myReadFile);
   std::cout << strMots7.back() << std::endl;
 
   std::cout << "Fin";
