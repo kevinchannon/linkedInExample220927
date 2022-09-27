@@ -28,12 +28,12 @@ int main() {
     return 1;
   }
 
-  auto strMots7 = std::vector<std::string>(calculateItemCount(myReadFile));
+  auto strMots7 = std::vector<std::string>(calculateItemCount(myReadFile), std::string(7, '\0'));
 
-  std::string myText;
-  std::ranges::generate(strMots7, [&myReadFile, &myText]() {
-    std::getline(myReadFile, myText);
-    return myText;
+  std::ranges::for_each(strMots7, [&myReadFile](auto&& word) {
+    myReadFile
+      .read(word.data(), fileWordLength)
+      .seekg(lineEndingLength, std::ifstream::cur);
   });
 
   std::cout << strMots7.back() << std::endl;
