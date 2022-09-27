@@ -23,7 +23,7 @@ int main() {
   constexpr auto fileName = R"(c:\Jeux\AJL\D7.txt)";
 
   std::ifstream myReadFile(fileName);
-  if (myReadFile.is_open()) {
+  if (not myReadFile.is_open()) {
     std::cout << "Error opening '" << fileName << "'\n";
     return 1;
   }
