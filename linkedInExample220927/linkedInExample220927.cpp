@@ -10,6 +10,7 @@
 constexpr auto fileWordLength = 7u;
 constexpr auto lineEndingLength = 2u;
 constexpr auto lineLength = fileWordLength + lineEndingLength;
+constexpr auto fileName = R"(c:\Jeux\AJL\D7.txt)";
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -21,8 +22,6 @@ inline size_t calculateItemCount(std::ifstream& file);
 
 int main() {
   std::cout << "Hello World!\n";
-
-  constexpr auto fileName = R"(c:\Jeux\AJL\D7.txt)";
 
   std::ifstream myReadFile(fileName);
   if (not myReadFile.is_open()) {
