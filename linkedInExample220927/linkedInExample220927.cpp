@@ -1,9 +1,9 @@
+#include <algorithm>
 #include <cmath>
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
 
 size_t calculateItemCount(std::ifstream& file) {
   file.seekg(0, std::ifstream::end);
@@ -24,8 +24,7 @@ int main() {
     return 1;
   }
 
-  auto strMots7 =
-      std::vector<std::string>(calculateItemCount(myReadFile), std::string{});
+  auto strMots7 = std::vector<std::string>(calculateItemCount(myReadFile));
 
   std::string myText;
   const auto getLineFromFile = [&myReadFile, &myText]() {
