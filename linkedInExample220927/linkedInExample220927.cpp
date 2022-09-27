@@ -5,9 +5,13 @@
 #include <string>
 #include <vector>
 
+///////////////////////////////////////////////////////////////////////////////
+
 constexpr auto fileWordLength = 7u;
 constexpr auto lineEndingLength = 2u;
 constexpr auto lineLength = fileWordLength + lineEndingLength;
+
+///////////////////////////////////////////////////////////////////////////////
 
 size_t calculateItemCount(std::ifstream& file) {
   file.seekg(0, std::ifstream::end);
@@ -16,6 +20,8 @@ size_t calculateItemCount(std::ifstream& file) {
 
   return (byteCount / lineLength) + (byteCount % lineLength != 0 ? 1 : 0);
 }
+
+///////////////////////////////////////////////////////////////////////////////
 
 std::vector<std::string> readItemsFromFile(std::ifstream& file) {
   auto out =
@@ -28,6 +34,8 @@ std::vector<std::string> readItemsFromFile(std::ifstream& file) {
 
   return out;
 }
+
+///////////////////////////////////////////////////////////////////////////////
 
 int main() {
   std::cout << "Hello World!\n";
@@ -47,3 +55,5 @@ int main() {
 
   return 0;
 }
+
+///////////////////////////////////////////////////////////////////////////////
