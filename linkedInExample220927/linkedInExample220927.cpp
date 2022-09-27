@@ -7,7 +7,7 @@ int main()
 {
     std::cout << "Hello World!\n";
 
-    constexpr auto fileName = "c:\\Jeux\\AJL\\D7.txt";
+    constexpr auto fileName = R"(c:\Jeux\AJL\D7.txt)";
 
     std::string myText;
     std::ifstream myReadFile(fileName);
