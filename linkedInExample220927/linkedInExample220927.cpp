@@ -10,8 +10,10 @@ int main()
     cout << "Hello World!\n";
     string myText;
     ifstream MyReadFile("c:\\Jeux\\AJL\\D7.txt");
-    if ((MyReadFile.rdstate() & ifstream::failbit))
+    if ((MyReadFile.rdstate() & ifstream::failbit)) {
       cout << "Error opening 'C:\\Jeux\\AJL\\D7.txt'\n";
+      return 1;
+    }
     MyReadFile.seekg(0, MyReadFile.end);
     int nombre = (int)(ceil)((double)(unsigned long int)MyReadFile.tellg() / 9.);
     string* strMots7 = new string[nombre];
@@ -25,4 +27,5 @@ int main()
     MyReadFile.close();
     delete[] strMots7;
     cout << "Fin";
+    return 0;
 }
