@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 
 int main()
 {
@@ -18,7 +19,7 @@ int main()
 
     myReadFile.seekg(0, myReadFile.end);
     int nombre = (int)(ceil)((double)(unsigned long int)myReadFile.tellg() / 9.);
-    std::string* strMots7 = new std::string[nombre];
+    auto strMots7 = std::vector<std::string>(nombre, std::string{});
     myReadFile.seekg(0);
 
     int i = 0;
@@ -30,7 +31,6 @@ int main()
     std::cout << strMots7[i - 1] << std::endl;
     
     myReadFile.close();
-    delete[] strMots7;
     std::cout << "Fin";
     
     return 0;
