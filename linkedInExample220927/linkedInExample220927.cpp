@@ -7,10 +7,12 @@ int main()
 {
     std::cout << "Hello World!\n";
 
+    constexpr auto fileName = "c:\\Jeux\\AJL\\D7.txt";
+
     std::string myText;
-    std::ifstream MyReadFile("c:\\Jeux\\AJL\\D7.txt");
+    std::ifstream MyReadFile(fileName);
     if ((MyReadFile.rdstate() & std::ifstream::failbit)) {
-      std::cout << "Error opening 'C:\\Jeux\\AJL\\D7.txt'\n";
+      std::cout << "Error opening '" << fileName << "'\n";
       return 1;
     }
 
