@@ -51,7 +51,7 @@ void readFileAndPrintFinalLine(std::ifstream& file) {
 
 std::vector<std::string> readItemsFromFile(std::ifstream& file) {
   auto out =
-      std::vector<std::string>(calculateItemCount(file), std::string(7, '\0'));
+      std::vector<std::string>(calculateItemCount(file), std::string(fileWordLength, '\0'));
 
   std::ranges::for_each(out, [&file](auto&& word) {
     file.read(word.data(), fileWordLength)
