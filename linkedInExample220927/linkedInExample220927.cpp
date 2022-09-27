@@ -25,10 +25,8 @@ int main()
       return 1;
     }
 
-    auto nombre = calculateItemCount(myReadFile);
-
-    auto strMots7 = std::vector<std::string>(nombre, std::string{});
-    myReadFile.seekg(0);
+    auto strMots7 =
+        std::vector<std::string>(calculateItemCount(myReadFile), std::string{});
 
     int i = 0;
     while (getline(myReadFile, myText)) {
