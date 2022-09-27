@@ -29,9 +29,8 @@ int main() {
     return 1;
   }
 
-  const auto strMots7 = readItemsFromFile(myReadFile);
-
-  if (not strMots7.empty()) {
+  if (const auto strMots7 = readItemsFromFile(myReadFile);
+      not strMots7.empty()) {
     std::cout << strMots7.back() << std::endl;
   }
 
