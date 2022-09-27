@@ -29,8 +29,6 @@ int main()
     }
 
     std::cout << strMots7[i - 1] << std::endl;
-    
-    myReadFile.close();
     std::cout << "Fin";
     
     return 0;
