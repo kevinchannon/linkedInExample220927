@@ -30,7 +30,10 @@ int main() {
   }
 
   const auto strMots7 = readItemsFromFile(myReadFile);
-  std::cout << strMots7.back() << std::endl;
+
+  if (not strMots7.empty()) {
+    std::cout << strMots7.back() << std::endl;
+  }
 
   std::cout << "Fin";
 
